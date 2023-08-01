@@ -80,7 +80,7 @@ const SignUp = () => {
               type='email'
               name='email'
               ref={enteredEmail}
-              placeholder='your name please...'
+              placeholder='your email please...'
               className='mt-12 p-10 py-4 px-6 bg-transparent
               placeholder:text-secondary
               text-white rounded-lg outlined-none border-none font-medium'
@@ -103,7 +103,7 @@ const SignUp = () => {
               type='password'
               name='password'
               ref={enteredPassword}
-              placeholder='your email please...'
+              placeholder='your password please...'
               style={{
                 border: "none",
                 width: "550px", // Adjust the width as needed
