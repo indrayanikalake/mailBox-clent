@@ -1,0 +1,33 @@
+.emailtype{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(252, 249, 249);
+}
+.emailtype__options{
+    display: flex;
+    align-items: center;
+    
+    min-width: 230px;
+    padding: 0px 30px;
+    cursor: pointer;
+    
+}
+.emailtype__options svg{
+    font-size: 20px;
+    
+}
+.emailtype__options:hover{
+    background-color: whitesmoke;
+    border-radius: 100px;
+}
+.emailtype__options--active{
+    min-width: 230px;
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    border-bottom: 3px solid red;
+}
+.emailtype__options--active svg,
+.emailtype__options--active p{
+    color: red;
+}

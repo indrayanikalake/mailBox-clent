@@ -4,11 +4,11 @@ import axios from 'axios';
 import { styles } from '../../styles';
 import { slideIn } from '../../utils/motion';
 import { SectionWrapper } from '../../hoc';
-import { Link, useNavigate } from 'react-router-dom';
 
 import Three from '../three/Three';
+import { useNavigate, Link } from 'react-router-dom';
 
-const SignUp = () => {
+const SignIn = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,16 +33,17 @@ const SignUp = () => {
    console.log(email);
    console.log(password);
     try {
-      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDz2JJcOPvQ6aZWZ7JSkBxM2wuUziGzq80', {
+      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDz2JJcOPvQ6aZWZ7JSkBxM2wuUziGzq80', {
         email,
         password,
         returnSecureToken: true,
       });
       setLoading(false);
       if (response.status === 200) {
-       
-        console.log('User has successfully signed up');
-        navigate('/signIn');
+        localStorage.setItem('email',response.data.email);
+        console.log('User has successfully signed in');
+
+        navigate('/mailBox')
         enteredEmail.current.value='';
         enteredPassword.current.value='';
         confirmPassword.current.value='';
@@ -62,13 +63,13 @@ const SignUp = () => {
     <div style={{boxShadow:' 55px 55px 55px rgb(255,255,255)'}} >
         <Three />
       <motion.div variants={slideIn('left', 'tween', 0.2, 1)}
-       
+       style={{borderLeft:'1px solid #C0C0C0',borderTop:'1px solid #C0C0C0'}}
        className='flex-col text-center mt-5 b-corner bg-transparent rounded-2xl'
        >
         <p className={styles.heroHeadText}
-         margin={{margin:'1rem 5rem'}}>Create an Account</p>
+         margin={{margin:'1rem 5rem'}}>want to open email-box</p>
          <h1 className={`${styles.heroHeadText} text-gold bg-transparent `}
-          style={{margin:'1rem 12rem', fontSize:'44px', fontWeight:'94em'}}>SIGN UP</h1>
+          style={{margin:'1rem 12rem', fontSize:'44px', fontWeight:'94em'}}>SIGN In</h1>
        <form onSubmit={handleSubmit}
        style={{dispplay:'flex', alignItems:'center', padding:'20px',}}
        className='mt-2 flex flex-col gap-2'>
@@ -143,13 +144,13 @@ const SignUp = () => {
           {error && <div className='text-red-500'>{error}</div>}
           <p 
           className=' text-center'>
-       
-           Already have an account? <Link to='/signIn'>Sign in</Link> </p>
+            
+           Don't have an account?<Link to='/'>Sign up</Link></p>
           <button type='submit' 
           style={{outline:'none', border:'none',width:'120px', height:'50px',margin:'2rem 0',
         borderRadius:'50px'}}
            className='violet-gradient py-3 px-8 outline-none shadow-md shadow-primary font-bold text-white rounded-xl'>
-            {loading ? 'Signing...' : 'Sing Up'}
+            {loading ? 'Signing..' : 'Sign In'}
           </button>
         </form>
       </motion.div>
@@ -157,4 +158,4 @@ const SignUp = () => {
   );
 };
 
-export default SectionWrapper(SignUp, 'signup');
+export default SectionWrapper(SignIn, 'signIn');
