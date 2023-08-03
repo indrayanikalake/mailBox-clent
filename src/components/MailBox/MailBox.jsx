@@ -14,10 +14,13 @@ import EmailList from './EmailList/EmailList';
 import Compose from './Compose/Compose';
 import { useSelector  } from 'react-redux';
 
+
+
 const MailBox = () => {
     
     const mail = useSelector((state) =>state.mail.sentMessageIsOpen);
   return (
+    
     <div>
     <div className='header'>
         <div 
@@ -62,7 +65,8 @@ const MailBox = () => {
     { mail && (<Compose />)}
     
     </div>
+   
   )
 }
 
-export default MailBox
+export default MailBox;
