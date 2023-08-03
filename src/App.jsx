@@ -1,5 +1,5 @@
 import React from 'react'
-import { MailBox, SignIn, SignUp, Three } from './components'
+import { EmailDetails, MailBox, SignIn, SignUp, Three } from './components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -14,7 +14,8 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={ <SignUp />}/>
         <Route exact path='/signIn' element={<SignIn />} />
-        <Route exact path='/mailBox' element={<MailBox />} />
+        <Route  exact path='/mailBox' element={<MailBox />} />
+         <Route exact  path='/mail' element={<EmailDetails />} />
       </Routes>
       </div>
       

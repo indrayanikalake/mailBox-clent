@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { styles } from '../../styles';
-import { slideIn } from '../../utils/motion';
+import { fadeIn, slideIn } from '../../utils/motion';
 import { SectionWrapper } from '../../hoc';
 
 import Three from '../three/Three';
@@ -62,7 +62,7 @@ const SignIn = () => {
   return (
     <div style={{boxShadow:' 55px 55px 55px rgb(255,255,255)'}} >
         <Three />
-      <motion.div variants={slideIn('left', 'tween', 0.2, 1)}
+      <motion.div variants={fadeIn('down', 'tween', 0.2, 1)}
        style={{borderLeft:'1px solid #C0C0C0',borderTop:'1px solid #C0C0C0'}}
        className='flex-col text-center mt-5 b-corner bg-transparent rounded-2xl'
        >

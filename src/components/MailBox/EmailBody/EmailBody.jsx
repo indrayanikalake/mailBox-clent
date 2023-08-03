@@ -3,33 +3,51 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import './EmailBody.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { openMessage } from '../../../redux/MailSlice';
 
-const EmailBody = () => {
+const EmailBody = ({name, subject, message, time}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
     const email = useSelector((state) => state.email.email);
+     console.log(email);
+    const openMessageHandler = () =>{
+      console.log('clicked');
+      console.log(name, subject, message, time);
+        dispatch(openMessage({
+         name, 
+         subject, 
+         message,
+         time
+        }
+        ));
+        
+        navigate('/mail');
+    }
   return (
-    <>
-    {Object.values(email).map((mail,index)=>(
-    <div  className='emailbody'>
+    
+   
+    <div  className='emailbody' onClick={()=>openMessageHandler()}>
        
-        <div key={index} className='emailbody__left'>
+        <div  className='emailbody__left'>
           <InboxIcon />
           <StarBorderIcon />
           <VideocamIcon />
-          <h4>{mail.to}</h4>
+          <h4>{name}</h4>
         </div>
         <div className='emailbody__middle'>
         <div className='emailbody__middle_msg'>
-           <h5>{mail.subject}:<span>{mail.message}</span></h5>
+           <h5>{subject}:<span>{message}</span></h5>
           </div>
         </div>
         <div className='emailbody__right'>
-          <p>{mail.timestamp}</p>
+          <p>{time}</p>
         </div>
       
     </div>
-    ))}
-    </>
+   
+    
   )
 }
 

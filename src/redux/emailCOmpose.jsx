@@ -10,8 +10,8 @@ const emailCOmposeSlice = createSlice({
             state.email = action.payload;
         },
         addEmail(state, action){
-            Object.keys(state.email).push(action.payload);
-        }
+            Object.keys(state.expenses).unshift(action.payload);
+         },
     }
 });
 

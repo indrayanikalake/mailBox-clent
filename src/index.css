@@ -190,7 +190,7 @@ video{
 .b-corner{
   position: absolute;
    top: 19px; 
-   right: 58px;
+   left: 218px;
    height: 96.8vh;
    width: 39vw;
 }

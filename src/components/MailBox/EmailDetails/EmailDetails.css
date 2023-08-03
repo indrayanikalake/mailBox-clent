@@ -1,0 +1,64 @@
+.emaillist{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+.emaillist__settingLeft{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+}
+.emaillist__settingLeft svg{
+    font-size: 18px;
+}
+.emaillist__settingRight{
+   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+}
+.emaildetails__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 1px 1px 3px  rgb(180, 170, 170);
+    border-bottom: 2px solid ghostwhite;
+    padding: 0 15px;
+}
+
+.emaildetails__headerLeft{
+    display: flex;
+    align-items: center;
+
+}
+.emaildetails__header svg{
+    font-size: 20px;
+}
+.emaildetails__headerRight{
+    display: flex;
+    align-items: center;
+}
+.emaildetails__middleheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    box-shadow: 1px 1px 3px  rgb(180, 170, 170);
+    border-bottom: 1px solid ghostwhite;
+}
+.emaildetails__middleheaderLeft{
+    display: flex;
+    align-items: center;
+}
+.emaildetails__middleheaderLeft h4{
+    margin-right: 10px;
+}
+.emaildetails__middleheaderRight svg{
+ font-size: 20px;
+}
+.emaildetails__body{
+    display: flex;
+    padding: 10px 15px;
+}

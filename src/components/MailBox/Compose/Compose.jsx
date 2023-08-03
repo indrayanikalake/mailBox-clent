@@ -56,13 +56,16 @@ const Compose = () => {
        try{
        const response = await axios.post(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}.json`,
        newExpense);
+       fetchData();
        console.log(response.data);
        dispatch(addEmail(response.data));
-       fetchData();
+      
        }catch(error){
-        alert(error);
+        console.log(error);
        }
-       alert(`email stored successfully`);
+       dispatch(closeSentMessage());
+       
+      
     }
 
   return (
