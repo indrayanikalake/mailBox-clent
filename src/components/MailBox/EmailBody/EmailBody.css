@@ -60,6 +60,9 @@
     justify-content: flex-end;
     flex: 10%;
 }
+.emailbody__right svg{
+    font-size:12px;
+}
 .emailbody__right p{
     font-size: 12px;
    

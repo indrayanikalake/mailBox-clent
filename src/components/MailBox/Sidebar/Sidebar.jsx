@@ -14,10 +14,13 @@ import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import GroupsIcon from '@mui/icons-material/Groups';
-import { useDispatch } from 'react-redux';
-import { openSentMessage } from '../../../redux/MailSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeSent, openSent, openSentMessage } from '../../../redux/MailSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  
+  const navigate = useNavigate();
     const dispatch = useDispatch();
   return (
     <div className='sidebar'>
@@ -25,11 +28,16 @@ const Sidebar = () => {
       style={{backgroundColor:'#ffff'}}
       className='compose__btn'
       onClick={()=>dispatch(openSentMessage())}>Compose</Button>
-      <SidebarOptions Icon={MailIcon} title='Primary' number='224' isActive={true} />
+      <div  onClick={()=>dispatch(closeSent())}>
+      <SidebarOptions Icon={MailIcon} title='Primary' number='227' isActive={true}
+       />
+       </div>
       <SidebarOptions Icon={StarIcon} title='Starred' number='' />
       <SidebarOptions Icon={AccessTimeIcon} title='Snoozed' number='' />
-      <SidebarOptions Icon={LabelImportantIcon} title='Important' number='588' />
-      <SidebarOptions Icon={SendIcon} title='Sent' number='' />
+      <SidebarOptions Icon={LabelImportantIcon} title='Important' number='' />
+      <div onClick={()=>dispatch(openSent())}>
+      <SidebarOptions Icon={SendIcon} title='Sent' number=''  />
+      </div>
       <SidebarOptions Icon={DraftsIcon} title='Drafts' number='' />
       <SidebarOptions Icon={SummarizeIcon} title='Documents' number='' />
       <SidebarOptions Icon={DeleteSweepIcon} title='Trash' number='' />

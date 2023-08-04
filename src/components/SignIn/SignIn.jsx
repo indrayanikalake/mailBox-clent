@@ -7,8 +7,12 @@ import { SectionWrapper } from '../../hoc';
 
 import Three from '../three/Three';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../redux/userSlice';
+
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -19,6 +23,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const email = enteredEmail.current.value;
     const password = enteredPassword.current.value;
     const cnfmPassword = confirmPassword.current.value;
@@ -27,7 +32,11 @@ const SignIn = () => {
       setError('Passwords do not match');
       return;
     }
-
+    dispatch(signIn({
+      email,
+      password,
+      confirmPassword
+    }))
     setError(null);
     setLoading(true);
    console.log(email);

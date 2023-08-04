@@ -5,33 +5,43 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import './EmailBody.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { openMessage } from '../../../redux/MailSlice';
+import { openMessage, seenMessageTrue } from '../../../redux/MailSlice';
+import { deleteEmail } from '../../../redux/emailCOmpose';
+import axios from 'axios';
 
-const EmailBody = ({name, subject, message, time}) => {
+
+const EmailBody = ({name, subject, message, time, key }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-    const email = useSelector((state) => state.email.email);
-     console.log(email);
+
+     
     const openMessageHandler = () =>{
       console.log('clicked');
       console.log(name, subject, message, time);
         dispatch(openMessage({
+          key,
          name, 
          subject, 
          message,
          time
         }
         ));
-        
+        dispatch(seenMessageTrue());
         navigate('/mail');
     }
+
+   
   return (
     
    
-    <div  className='emailbody' onClick={()=>openMessageHandler()}>
+    <div  className='emailbody'
+  
+    onClick={()=>openMessageHandler()}>
        
         <div  className='emailbody__left'>
+          <div >
           <InboxIcon />
+          </div>
           <StarBorderIcon />
           <VideocamIcon />
           <h4>{name}</h4>
@@ -42,6 +52,7 @@ const EmailBody = ({name, subject, message, time}) => {
           </div>
         </div>
         <div className='emailbody__right'>
+          
           <p>{time}</p>
         </div>
       

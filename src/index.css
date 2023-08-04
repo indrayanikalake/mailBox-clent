@@ -194,6 +194,13 @@ video{
    height: 96.8vh;
    width: 39vw;
 }
+.b-center{
+  position: absolute;
+   top: 29px; 
+   right: 288px;
+   height: 96.8vh;
+   width: 39vw;
+}
 .blue-text-gradient {
   /* background: -webkit-linear-gradient(#eee, #333); */
   background: #56ccf2; /* fallback for old browsers */

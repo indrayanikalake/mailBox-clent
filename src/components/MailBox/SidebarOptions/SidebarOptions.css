@@ -24,6 +24,10 @@
    font-size:12px;
    
 }
+.sidebaroptions p{
+    color: blue;
+    opacity: 1;
+}
 .sidebaroptions:hover{
  cursor: pointer;
  background-color: white;

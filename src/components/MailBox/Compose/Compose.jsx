@@ -14,30 +14,43 @@ import { useDispatch } from 'react-redux';
 import { closeSentMessage } from '../../../redux/MailSlice';
 import axios from 'axios';
 import { addEmail, setEmail } from '../../../redux/emailCOmpose';
+import { setSentEmail } from '../../../redux/emailSentSlice';
 
 const Compose = () => {
-
+   const email = localStorage.getItem('email').replace('@','').replace('.','');
     const dispatch = useDispatch();
     const [to, setTo] = useState('');
     const [subject,setSubject] = useState('');
     const [message, setMessage] = useState('');
-    const email = localStorage.getItem('email').replace('@','').replace('.','');
 
-    useEffect(() =>{
-        fetchData();
-    },[]);
-
-    const fetchData = async () =>{
-       try{
-         const getResponse = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}.json`)
-         console.log(getResponse.data);
-         if(getResponse.data === null) getResponse.data = {};
-         dispatch(setEmail(getResponse.data));
-        }catch(error){
-        alert(error);
-       }
+    
+ useEffect(() =>{
+   fetchData();
+ },[]);
+ 
+ const fetchData = async () =>{
+ 
+ 
+ console.log(email);
+ try{
+    const getResponse = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent.json`);
+    const getResponseUser = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/recieve.json`);
+    console.log(getResponse.data);
+    console.log(getResponseUser.data);
+    console.log(getResponseUser);
+    if(getResponse.data == null)getResponse.data ={};
+    if(getResponseUser.data == null)getResponseUser.data = {}
+    if(getResponse.status === 200){
+    dispatch(setEmail(getResponseUser.data));
+    dispatch(setSentEmail(getResponse.data));
     }
-
+   }catch(error){
+   alert(error);
+  }
+ }
+   
+  
+   
     const formSubmit = async (e) =>{
        e.preventDefault();
        const date = new Date();
@@ -46,20 +59,28 @@ const Compose = () => {
        const ampm = hours>=12?'pm':'am';
        const twelveHour = hours%12 || 12;
        const index = to.indexOf('@');
-
-       const newExpense = {
+  
+       const newEmail = {
+        userEmail:to.replace('@','').replace('.',''),
+     
         to:to.substring(0, index).replace(/\d+/g,''),
         subject,
         message,
         timestamp:`${twelveHour}:${min}${ampm}`,
        }
        try{
-       const response = await axios.post(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}.json`,
-       newExpense);
+         
+       const response = await axios.post(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent.json`,
+       newEmail);
+       const responseUser = await axios.post(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${newEmail.userEmail}/recieve.json`,
+       newEmail);
        fetchData();
        console.log(response.data);
+       console.log(responseUser.data);
+       if(response.status === 200){
        dispatch(addEmail(response.data));
-      
+       dispatch(addEmail(responseUser.data));
+       }
        }catch(error){
         console.log(error);
        }

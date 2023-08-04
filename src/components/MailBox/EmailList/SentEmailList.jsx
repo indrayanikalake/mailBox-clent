@@ -6,14 +6,13 @@ import EmailBody from '../EmailBody/EmailBody';
 import { useSelector } from 'react-redux';
 
 
-const EmailList = () => {
-  const email = useSelector((state) =>state.email.email);
+const SentEmailList = () => {
+  const email = useSelector((state) =>state.emailSent.emailSent);
   
   console.log(email);
   const seenMessage = useSelector((state) =>state.mail.seenMessage);
   
  console.log(seenMessage);
-
   return (
     <div>
     <EmailListSettings />
@@ -23,7 +22,7 @@ const EmailList = () => {
        return(
         <div key={userId} >
       <EmailBody
-        key={userId} 
+     
         name={mail.to} subject={mail.subject} message={mail.message} time={mail.timestamp} 
       />
       </div>
@@ -34,4 +33,4 @@ const EmailList = () => {
   )
 }
 
-export default EmailList
+export default SentEmailList

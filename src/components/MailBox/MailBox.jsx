@@ -12,15 +12,23 @@ import { ina } from '../../assets';
 import Sidebar from './Sidebar/Sidebar';
 import EmailList from './EmailList/EmailList';
 import Compose from './Compose/Compose';
-import { useSelector  } from 'react-redux';
-
+import { useDispatch, useSelector  } from 'react-redux';
+import SentEmailList from './EmailList/SentEmailList';
+import { signOut } from '../../redux/userSlice';
 
 
 const MailBox = () => {
-    
+    const dispatch = useDispatch();
     const mail = useSelector((state) =>state.mail.sentMessageIsOpen);
+    const sent = useSelector((state) =>state.mail.sent);
+    const user = useSelector((state) =>state.user.value);
+    console.log(user);
+    console.log(sent);
+
+   
   return (
     
+   
     <div>
     <div className='header'>
         <div 
@@ -51,7 +59,7 @@ const MailBox = () => {
         <IconButton>
                 <SettingsIcon></SettingsIcon>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={()=>dispatch(signOut())}>
                 <AppsIcon></AppsIcon>
         </IconButton>
         <Avatar src={ina}></Avatar>
@@ -60,11 +68,14 @@ const MailBox = () => {
     </div>
     <div className='app-body'>
     <Sidebar />
-    <EmailList />
+    
+    { sent ?  <SentEmailList /> : <EmailList />} 
+   
     </div>
     { mail && (<Compose />)}
     
     </div>
+   
    
   )
 }
