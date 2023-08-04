@@ -1,13 +1,13 @@
 import React from 'react'
 import { EmailDetails, MailBox, SignIn, SignUp, Three, Home } from './components'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 
 
 
 const App = () => {
 
-  const email = localStorage.getItem('email').replace('@','').replace('.','');
+ 
     
   return (
     <Router>

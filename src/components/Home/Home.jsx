@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
+    <div style={{boxShadow:' 55px 55px 55px rgb(255,255,255)'}}>
       <Three />
       <div className='b-center transparent moving-border'>
       
@@ -26,7 +26,7 @@ const Home = () => {
       style={{margin:'1rem 32rem', width:'12%'}} component={Link} to='/signUp'
       variant='contained' aria-label='primary'>Let's Start</Button>
       <p style={{margin:'2rem 26rem', fontSize:'20px', color:'gray'}}
-      >Send and receive email from your @icloud.com email address on any device and on the web.</p>
+      >Send and receive email from your @connect.com email address on any device and on the web.</p>
       </div>
     </div>
   )

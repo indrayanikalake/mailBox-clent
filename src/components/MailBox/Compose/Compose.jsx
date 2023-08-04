@@ -26,6 +26,10 @@ const Compose = () => {
     
  useEffect(() =>{
    fetchData();
+   const pollInterval = setInterval(fetchData, 2000);
+   return () => {
+      clearInterval(pollInterval);
+    };
  },[]);
  
  const fetchData = async () =>{
