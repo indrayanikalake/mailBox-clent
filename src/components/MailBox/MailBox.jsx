@@ -15,15 +15,22 @@ import Compose from './Compose/Compose';
 import { useDispatch, useSelector  } from 'react-redux';
 import SentEmailList from './EmailList/SentEmailList';
 import { signOut } from '../../redux/userSlice';
-
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const MailBox = () => {
+  const navigate = useNavigate();
     const dispatch = useDispatch();
     const mail = useSelector((state) =>state.mail.sentMessageIsOpen);
     const sent = useSelector((state) =>state.mail.sent);
     const user = useSelector((state) =>state.user.value);
     console.log(user);
     console.log(sent);
+
+    const handleSignout = () =>{
+      localStorage.removeItem('email');
+      navigate('/');
+    }
 
    
   return (
@@ -59,7 +66,7 @@ const MailBox = () => {
         <IconButton>
                 <SettingsIcon></SettingsIcon>
         </IconButton>
-        <IconButton onClick={()=>dispatch(signOut())}>
+        <IconButton onClick={()=>handleSignout()}>
                 <AppsIcon></AppsIcon>
         </IconButton>
         <Avatar src={ina}></Avatar>

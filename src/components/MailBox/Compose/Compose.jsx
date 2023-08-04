@@ -62,7 +62,7 @@ const Compose = () => {
   
        const newEmail = {
         userEmail:to.replace('@','').replace('.',''),
-     
+        emailId : to,
         to:to.substring(0, index).replace(/\d+/g,''),
         subject,
         message,
@@ -126,7 +126,7 @@ const Compose = () => {
        </div>
        <div className='compose__footer'>
           <div className='compose__footer_left'>
-          <Button type='submit' variant='contained' aria-label='outlined primary'>Send</Button>
+          <Button type='submit' variant='contained' aria-label=' primary'>Send</Button>
           </div>
           <div className='compose__footer_right'>
              

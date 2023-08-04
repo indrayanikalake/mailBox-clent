@@ -10,16 +10,16 @@ import { deleteEmail } from '../../../redux/emailCOmpose';
 import axios from 'axios';
 
 
-const EmailBody = ({name, subject, message, time, key }) => {
+const EmailBody = ({name, subject, message, time, id }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
      
     const openMessageHandler = () =>{
       console.log('clicked');
-      console.log(name, subject, message, time);
+      console.log(name, subject, message, time, id);
         dispatch(openMessage({
-          key,
+          id,
          name, 
          subject, 
          message,

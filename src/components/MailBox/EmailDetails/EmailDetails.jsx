@@ -21,16 +21,18 @@ import { deleteEmail } from '../../../redux/emailCOmpose';
 import axios from 'axios';
 
 const EmailDetails = () => {
+  const email = localStorage.getItem('email').replace('@','').replace('.','');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedMail = useSelector((state) =>state.mail.selectedValue);
-  console.log(selectedMail);
+  console.log(selectedMail.id);
 
   const handleDelete = async () =>{
-     dispatch(deleteEmail(selectedMail.key));
+    console.log('clicked');
+     dispatch(deleteEmail(selectedMail.id));
      try{
-      await axios.delete(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/recieve/${selectedMail.key}.json`)
-      await axios.delete(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent/${selectedMail.key}.json`)
+      await axios.delete(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/recieve/${selectedMail.id}.json`)
+      await axios.delete(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent/${selectedMail.id}.json`)
     }catch(error){
       console.log(error);
     }

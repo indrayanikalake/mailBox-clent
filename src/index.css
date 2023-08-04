@@ -63,7 +63,25 @@ video{
   backdrop-filter: blur(8px);
   box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.4);
 }
+.moving-border {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 5px solid rgb(245, 240, 240);
+  animation: moving-border-animation 4s linear infinite;
+}
 
+@keyframes moving-border-animation {
+  0% {
+    border-color: rgb(243, 236, 211);
+  }
+  50% {
+    border-color: white;
+  }
+  100% {
+    border-color: rgb(216, 214, 245);
+  }
+}
 .golden{
   color: #DCCA87;
 }
@@ -197,9 +215,15 @@ video{
 .b-center{
   position: absolute;
    top: 29px; 
-   right: 288px;
-   height: 96.8vh;
-   width: 39vw;
+   right: 88px;
+   height: 93.3vh;
+   width: 89vw;
+   border-radius: 120px;
+}
+.transparent{
+  background: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow:  inset 25px 25px 25px rgb(255, 255, 255);
 }
 .blue-text-gradient {
   /* background: -webkit-linear-gradient(#eee, #333); */
