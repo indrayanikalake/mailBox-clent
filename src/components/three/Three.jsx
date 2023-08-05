@@ -52,7 +52,7 @@ const Three = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      circle.rotation.z += 0.003;
+      circle.rotation.z += 0.001;
 
       renderer.render(scene, camera);
     };

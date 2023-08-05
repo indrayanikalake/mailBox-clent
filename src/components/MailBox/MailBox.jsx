@@ -19,18 +19,17 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const MailBox = () => {
+  const mail = useSelector((state) =>state.mail.sentMessageIsOpen);
+  console.log(mail);
   const navigate = useNavigate();
     const dispatch = useDispatch();
-    const mail = useSelector((state) =>state.mail.sentMessageIsOpen);
+    
     const sent = useSelector((state) =>state.mail.sent);
     const user = useSelector((state) =>state.user.value);
     console.log(user);
     console.log(sent);
 
-    const handleSignout = () =>{
-      localStorage.removeItem('email');
-      navigate('/');
-    }
+   
 
    
   return (
@@ -66,7 +65,7 @@ const MailBox = () => {
         <IconButton>
                 <SettingsIcon></SettingsIcon>
         </IconButton>
-        <IconButton onClick={()=>handleSignout()}>
+        <IconButton>
                 <AppsIcon></AppsIcon>
         </IconButton>
         <Avatar src={ina}></Avatar>
@@ -79,7 +78,7 @@ const MailBox = () => {
     { sent ?  <SentEmailList /> : <EmailList />} 
    
     </div>
-    { mail && (<Compose />)}
+    {mail && (<Compose />)}
     
     </div>
    

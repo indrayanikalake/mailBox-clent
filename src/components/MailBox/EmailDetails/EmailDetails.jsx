@@ -1,12 +1,12 @@
 import { Avatar, IconButton } from '@mui/material'
-import React from 'react'
+import React, {useEffect } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import PrintIcon from '@mui/icons-material/Print';
 import LaunchIcon from '@mui/icons-material/Launch';
@@ -19,13 +19,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Key } from '@mui/icons-material';
 import { deleteEmail } from '../../../redux/emailCOmpose';
 import axios from 'axios';
+import { openMessage } from '../../../redux/MailSlice';
 
 const EmailDetails = () => {
   const email = localStorage.getItem('email').replace('@','').replace('.','');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const selectedMail = useSelector((state) =>state.mail.selectedValue);
+  console.log(selectedMail);
   console.log(selectedMail.id);
+  
 
   const handleDelete = async () =>{
     console.log('clicked');
@@ -37,6 +40,8 @@ const EmailDetails = () => {
       console.log(error);
     }
   }
+
+ 
   return (
     <div className = 'emaildetails'>
       <div className='emaillist'>
@@ -72,7 +77,7 @@ const EmailDetails = () => {
         </IconButton>
         </div>       
        <div className='emaildetails__headerRight'>
-       <p>{selectedMail.time}</p>
+       <p>{selectedMail.timestamp}</p>
        <IconButton>
             <PrintIcon />
         </IconButton>
@@ -88,7 +93,7 @@ const EmailDetails = () => {
       <IconButton>
            <Avatar />
       </IconButton>
-       <h4>{selectedMail.name}</h4>
+       <h4>{selectedMail.to}</h4>
         </div>       
        <div className='emaildetails__middleheaderRight'>
        
@@ -99,7 +104,7 @@ const EmailDetails = () => {
             <ReplyIcon />
         </IconButton>
         <IconButton onClick={()=>handleDelete()}>
-            <MoreVertIcon />
+           <DeleteIcon />
         </IconButton>
        </div>
        

@@ -17,6 +17,7 @@ import { addEmail, setEmail } from '../../../redux/emailCOmpose';
 import { setSentEmail } from '../../../redux/emailSentSlice';
 
 const Compose = () => {
+
    const email = localStorage.getItem('email').replace('@','').replace('.','');
     const dispatch = useDispatch();
     const [to, setTo] = useState('');
@@ -24,36 +25,7 @@ const Compose = () => {
     const [message, setMessage] = useState('');
 
     
- useEffect(() =>{
-   fetchData();
-   const pollInterval = setInterval(fetchData, 2000);
-   return () => {
-      clearInterval(pollInterval);
-    };
- },[]);
  
- const fetchData = async () =>{
- 
- 
- console.log(email);
- try{
-    const getResponse = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent.json`);
-    const getResponseUser = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/recieve.json`);
-    console.log(getResponse.data);
-    console.log(getResponseUser.data);
-    console.log(getResponseUser);
-    if(getResponse.data == null)getResponse.data ={};
-    if(getResponseUser.data == null)getResponseUser.data = {}
-    if(getResponse.status === 200){
-    dispatch(setEmail(getResponseUser.data));
-    dispatch(setSentEmail(getResponse.data));
-    }
-   }catch(error){
-   alert(error);
-  }
- }
-   
-  
    
     const formSubmit = async (e) =>{
        e.preventDefault();
@@ -65,6 +37,7 @@ const Compose = () => {
        const index = to.indexOf('@');
   
        const newEmail = {
+        isRead: false,
         userEmail:to.replace('@','').replace('.',''),
         emailId : to,
         to:to.substring(0, index).replace(/\d+/g,''),
@@ -94,6 +67,7 @@ const Compose = () => {
     }
 
   return (
+   
     <div className='compose'>
         <div className='compose__header'>
            <div className='compose__header_left'>
@@ -144,6 +118,8 @@ const Compose = () => {
         </div>
         </form>
     </div>
+    
+    
   )
 }
 

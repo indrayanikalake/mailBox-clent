@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './EmailList.css';
 import EmailListSettings from '../EmailListSettings/EmailListSettings';
 import EmailType from '../EmailType/EmailType';
@@ -15,6 +15,7 @@ const EmailList = () => {
   
  console.log(seenMessage);
 
+   
   return (
     <div>
     <EmailListSettings />
@@ -25,8 +26,8 @@ const EmailList = () => {
        return(
         <div key={mail.to} >
       <EmailBody
-        
-        name={mail.to} subject={mail.subject} message={mail.message} time={mail.timestamp} id={userId}  
+        isRead = {mail.isRead}
+        to={mail.to} subject={mail.subject} message={mail.message} timestamp={mail.timestamp} id={userId}  
       />
       </div>
        )

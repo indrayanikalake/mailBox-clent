@@ -13,7 +13,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-
+  
  overflow: hidden;
 }
 
@@ -73,13 +73,13 @@ video{
 
 @keyframes moving-border-animation {
   0% {
-    border-color: rgb(243, 236, 211);
+    border-color: rgb(249, 241, 214);
   }
   50% {
     border-color: white;
   }
   100% {
-    border-color: rgb(216, 214, 245);
+    border-color: rgb(222, 221, 245);
   }
 }
 .golden{
@@ -214,15 +214,15 @@ video{
 }
 .b-center{
   position: absolute;
-   top: 29px; 
-   right: 88px;
-   height: 93.3vh;
-   width: 89vw;
+   top: 12px; 
+   right: 28px;
+   height: 96.8vh;
+   width: 96vw;
    border-radius: 120px;
 }
 .transparent{
   background: transparent;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
   box-shadow:  inset 25px 25px 25px rgb(255, 255, 255);
 }
 .blue-text-gradient {
