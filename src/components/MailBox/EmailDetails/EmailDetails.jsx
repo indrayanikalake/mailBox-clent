@@ -93,7 +93,7 @@ const EmailDetails = () => {
       <IconButton>
            <Avatar />
       </IconButton>
-       <h4>{selectedMail.to}</h4>
+       <h4>{selectedMail.user}</h4>
         </div>       
        <div className='emaildetails__middleheaderRight'>
        

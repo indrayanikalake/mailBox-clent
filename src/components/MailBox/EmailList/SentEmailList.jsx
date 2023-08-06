@@ -23,7 +23,7 @@ const SentEmailList = () => {
        return(
         <div  >
       <EmailBody
-        isRead={mail.isRead}
+        isRead={mail.isRead} user={mail.user}
         to={mail.to} subject={mail.subject} message={mail.message} timestamp={mail.timestamp} id={userId} 
       />
       </div>

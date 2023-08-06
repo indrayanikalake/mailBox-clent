@@ -17,15 +17,16 @@ import { addEmail, setEmail } from '../../../redux/emailCOmpose';
 import { setSentEmail } from '../../../redux/emailSentSlice';
 
 const Compose = () => {
-
+   const userEmail = localStorage.getItem('email');
    const email = localStorage.getItem('email').replace('@','').replace('.','');
     const dispatch = useDispatch();
     const [to, setTo] = useState('');
     const [subject,setSubject] = useState('');
     const [message, setMessage] = useState('');
 
-    
- 
+    const userIndex = userEmail.indexOf('@');
+      console.log(userIndex)
+    console.log( userEmail.substring(0,userIndex).replace(/\d+/g,''));
    
     const formSubmit = async (e) =>{
        e.preventDefault();
@@ -35,8 +36,11 @@ const Compose = () => {
        const ampm = hours>=12?'pm':'am';
        const twelveHour = hours%12 || 12;
        const index = to.indexOf('@');
+       const userIndex = userEmail.indexOf('@');
+      
   
        const newEmail = {
+         user: userEmail.substring(0,userIndex).replace(/\d+/g,''),
         isRead: false,
         userEmail:to.replace('@','').replace('.',''),
         emailId : to,

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './EmailList.css';
 import EmailListSettings from '../EmailListSettings/EmailListSettings';
 import EmailType from '../EmailType/EmailType';
@@ -11,9 +11,7 @@ const EmailList = () => {
   
   console.log(email);
   
-  const seenMessage = useSelector((state) =>state.mail.seenMessage);
-  
- console.log(seenMessage);
+ 
 
    
   return (
@@ -26,7 +24,7 @@ const EmailList = () => {
        return(
         <div key={mail.to} >
       <EmailBody
-        isRead = {mail.isRead}
+        isRead = {mail.isRead} user = {mail.user}
         to={mail.to} subject={mail.subject} message={mail.message} timestamp={mail.timestamp} id={userId}  
       />
       </div>

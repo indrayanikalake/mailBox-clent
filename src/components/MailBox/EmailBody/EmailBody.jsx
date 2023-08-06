@@ -10,10 +10,9 @@ import { deleteEmail } from '../../../redux/emailCOmpose';
 import axios from 'axios';
 
 
-const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
+const EmailBody = ({to, subject, message, timestamp, id, isRead, user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [markRead, setMarkRead] = useState(false);
   const email = localStorage.getItem('email').replace('@','').replace('.','');
    console.log(to, id, subject, message);
 
@@ -21,12 +20,13 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
   console.log(sentemail);
   const correctId = Object.keys(sentemail).find((email)=>email === id);
   console.log(correctId);
-  var mark =false;
+
   
     const openMessageHandler = async () =>{
       console.log('clicked');
-      console.log(to, subject, message, timestamp, id);
+      
         dispatch(openMessage({
+          user : user,
           isRead,
           id,
          to, 
@@ -37,6 +37,7 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
         ));
         dispatch(seenMessageTrue());
        var selectedMail = {
+        user : user,
         id:id,
         isRead:isRead,
         to:to,
@@ -65,16 +66,9 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
                 isRead:true
               }))
               
-              const isSentRead = responseSent == undefined? false: true;
-              const isRecieveRead = responseRecieve  == undefined? false : true;
-             console.log(isSentRead);
-             console.log(isRecieveRead);
              
-            await setMarkRead(true);
-            
-             console.log(markRead);
              
-             console.log(mark);
+          
             
             }catch(error){
               console.log(error);
@@ -83,10 +77,7 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
   navigate('/mail');
         
     }
-   
-  useEffect(()=>{
-    console.log(markRead);
-  },[]);
+
    
          
   return (
@@ -102,7 +93,7 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead }) => {
           </div>
           <StarBorderIcon />
           <VideocamIcon />
-          <h4>{to}</h4>
+          <h4>{user}</h4>
          
         </div>
         <div className='emailbody__middle'>
