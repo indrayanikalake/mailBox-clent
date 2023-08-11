@@ -88,9 +88,9 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead, user }) => {
     onClick={()=>openMessageHandler()}>
        
         <div  className='emailbody__left'>
-          <div >
-          {!isRead && (<InboxIcon />) }
-          </div>
+          
+           <InboxIcon />
+          
           <StarBorderIcon />
           <VideocamIcon />
           <h4>{user}</h4>
@@ -102,7 +102,7 @@ const EmailBody = ({to, subject, message, timestamp, id, isRead, user }) => {
           </div>
         </div>
         <div className='emailbody__right'>
-          
+          { !isRead && (<strong style={{fontSize:'18px', color:'blue'}}>*</strong>) }
           <p>{timestamp}</p>
         </div>
       

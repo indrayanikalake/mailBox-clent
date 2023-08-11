@@ -68,7 +68,7 @@ const Sidebar = () => {
       className='compose__btn'
       onClick={()=>dispatch(openSentMessage())}>Compose</Button>
       <div  onClick={()=>dispatch(closeSent())}>
-      <SidebarOptions Icon={MailIcon} title='Primary' number='227' isActive={true}
+      <SidebarOptions Icon={MailIcon} title='Primary' number='' isActive={true}
        />
        </div>
       <SidebarOptions Icon={StarIcon} title='Starred' number='' />

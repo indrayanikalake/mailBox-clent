@@ -25,7 +25,7 @@ const Home = () => {
       <Button 
       style={{margin:'1rem 34rem', width:'12%'}} component={Link} to='/signUp'
       variant='contained' aria-label='primary'>Let's Start</Button>
-      <p style={{margin:'2rem 28rem', fontSize:'20px', color:'gray'}}
+      <p style={{margin:'2rem 30rem', fontSize:'18px', color:'gray'}}
       >Send and receive email from your @connect.com email address on any device and on the web.</p>
          <p style={{margin:'1rem 30.9rem'}}><Link to='/'>Learn more about Connect Mail </Link></p>
       </div>

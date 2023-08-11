@@ -19,7 +19,7 @@ const EmailList = () => {
     <EmailListSettings />
     <EmailType />
     {email.length === 0 ? (<div>..</div>) :
-    (Object.keys(email).map((userId) => {
+    (Object.keys(email).reverse().map((userId) => {
        const mail = email[userId];
        return(
         <div key={mail.to} >

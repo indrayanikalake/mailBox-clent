@@ -214,9 +214,9 @@ video{
 }
 .b-center{
   position: absolute;
-   top: 12px; 
+   top: 2px; 
    right: 28px;
-   height: 96.8vh;
+   height: 98.8vh;
    width: 96vw;
    border-radius: 120px;
 }
