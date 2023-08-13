@@ -22,7 +22,7 @@ const EmailList = () => {
     (Object.keys(email).reverse().map((userId) => {
        const mail = email[userId];
        return(
-        <div key={mail.to} >
+        <div key={userId} >
       <EmailBody
         isRead = {mail.isRead} user = {mail.user}
         to={mail.to} subject={mail.subject} message={mail.message} timestamp={mail.timestamp} id={userId}  

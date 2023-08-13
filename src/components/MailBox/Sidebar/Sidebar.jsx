@@ -29,10 +29,13 @@ const Sidebar = () => {
 
     useEffect(() =>{
       fetchData();
+
       const pollInterval = setInterval(fetchData, 2000);
       return () => {
          clearInterval(pollInterval);
        };
+
+
     },[]);
     
     const fetchData = async () =>{
@@ -42,7 +45,7 @@ const Sidebar = () => {
     try{
        const getResponse = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/sent.json`);
        const getResponseUser = await axios.get(`https://mail-box-client-ccb2c-default-rtdb.firebaseio.com/${email}/recieve.json`);
-       console.log(getResponse.data);
+       console.log('fetched',getResponse.data);
        console.log(getResponseUser.data);
        console.log(getResponseUser);
        if(getResponse.data == null)getResponse.data ={};

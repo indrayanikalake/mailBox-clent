@@ -32,11 +32,7 @@ const SignIn = () => {
       setError('Passwords do not match');
       return;
     }
-    dispatch(signIn({
-      email,
-      password,
-      confirmPassword
-    }))
+    
     setError(null);
     setLoading(true);
    console.log(email);
